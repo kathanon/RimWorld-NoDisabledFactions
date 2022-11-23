@@ -11,8 +11,11 @@ namespace NoDisabledFactions {
             var harmony = new Harmony(Strings.ID);
             harmony.PatchAll();
             QuestNode_RandomNode n;
-            QuestNode_CreateIncidents n2;
-            IncidentWorker_MechCluster n3;
+            QuestNode_Infestation n2;
+            SitePartWorker_MechCluster n3;
+            SitePartWorker_SleepingMechanoids n6;
+            QuestNode_GenerateSite n4;
+            QuestNode_SubScript n5;
         }
     }
 }

@@ -27,5 +27,19 @@ namespace NoDisabledFactions {
                 __result = def.Worker.CanFireNow(parms);
             }
         }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(SitePartWorker), nameof(SitePartWorker.IsAvailable))]
+        public static void SitePartWorker_IsAvailable(ref bool __result, SitePartWorker __instance) {
+            if (__result) {
+                if (!HasMechs && __instance is SitePartWorker_MechCluster) {
+                    __result = false;
+                }
+            }
+        }
+
+        private static bool HasMechs => Faction.OfMechanoids != null;
+
+        private static bool HasInsects => Faction.OfInsects != null;
     }
 }
